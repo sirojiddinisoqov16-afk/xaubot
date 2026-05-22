@@ -15,7 +15,7 @@ SYMBOL = "XAUUSDm"
 LOT = 0.01
 TP_POINTS = 4
 MAX_TRADES = 1
-INTERVAL = 290INTERVAL = 290
+INTERVAL = 290
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s  %(message)s")
 log = logging.getLogger(__name__)
