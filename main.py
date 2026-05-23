@@ -26,7 +26,7 @@ bot_status = {"running": False, "last_check": "—", "last_signal": "—", "trad
 @app.route("/")
 def home():
     s = bot_status
-        return f"<html><body style='background:#0a0e1a;color:#00e896;padding:30px'><h2>XAUUSD Bot</h2><p>Status: {'ISHLAYAPTI' if s['running'] else 'TOXTATILGAN'}</p><p>Tekshiruv: {s['last_check']}</p><p>Signal: {s['last_signal']}</p><p>Savdolar: {s['trades']}</p></body></html>"
+        return "<html><body style='background:#0a0e1a;color:#00e896;padding:30px'><h2>XAUUSD Bot</h2><p>Status: " + ("ISHLAYAPTI" if s["running"] else "TOXTATILGAN") + "</p><p>Tekshiruv: " + s["last_check"] + "</p><p>Signal: " + s["last_signal"] + "</p><p>Savdolar: " + str(s["trades"]) + "</p></body></html>"
 
         def run_flask():
             app.run(host="0.0.0.0", port=8080, use_reloader=False)
