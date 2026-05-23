@@ -2,20 +2,21 @@ import asyncio
 import threading
 import requests
 import logging
+import os
 from datetime import datetime
 from flask import Flask
 from metaapi_cloud_sdk import MetaApi
 
-META_TOKEN = "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiJkOTQxYWM0OTIxYWM2NDJlMmY3NTU3MjU5MzJkMWRhMCIsImFjY2Vzc1J1bGVzIjpbeyJpZCI6InRyYWRpbmctYWNjb3VudC1tYW5hZ2VtZW50LWFwaSIsIm1ldGhvZHMiOlsidHJhZGluZy1hY2NvdW50LW1hbmFnZW1lbnQtYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFhcGktcmVzdC1hcGkiLCJtZXRob2RzIjpbIm1ldGFhcGktYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFhcGktcnBjLWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6d3M6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX1dfQ"
-ACCOUNT_ID = "253534727"
-BOT_TOKEN = "8636017486:AAG9uvaIm5wD-FoE9fZPNPfr3vQL0kXwwFE"
+META_TOKEN = os.environ.get("META_API_TOKEN")
+ACCOUNT_ID = os.environ.get("ACCOUNT_ID")
+BOT_TOKEN = os.environ.get("BOT_TOKEN")
 CHAT_ID = "1920797472"
 
 SYMBOL = "XAUUSDm"
 LOT = 0.01
 TP_POINTS = 4
 MAX_TRADES = 1
-INTERVAL = 290   
+INTERVAL = 290  
 logging.basicConfig(level=logging.INFO, format="%(asctime)s  %(message)s")
 log = logging.getLogger(__name__)
 
