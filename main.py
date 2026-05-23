@@ -35,8 +35,9 @@ def telegram(text):
         requests.post(f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage",
             json={"chat_id": CHAT_ID, "text": text, "parse_mode": "HTML"}, timeout=10)
     except Exception as e:
-        log.error(f"Telegram: {e}")
-        def get_candles(yf_interval, yf_range):
+            log.error(f"Telegram: {e}")
+
+def get_candles(yf_interval, yf_range):
     try:
         url = f"https://query1.finance.yahoo.com/v8/finance/chart/GC=F?interval={yf_interval}&range={yf_range}"
         r = requests.get(url, headers={"User-Agent": "Mozilla/5.0"}, timeout=15)
@@ -64,7 +65,7 @@ def detect_signal(candles):
     if not c1["bull"] and c2["bull"] and c3["bull"] and ok:
         return "BUY", c3["close"], c2["low"]
     return None, 0, 0
-    async def place_order(conn, signal, entry, sl_price, tf_name):
+async def place_order(conn, signal, entry, sl_price, tf_name):
     tp = round(entry + TP_POINTS, 2) if signal=="BUY" else round(entry - TP_POINTS, 2)
     sl = round(sl_price, 2)
     try:
@@ -113,7 +114,7 @@ async def timeframe_task(conn, tf):
         except Exception as e:
             log.error(f"[{name}] {e}")
         await asyncio.sleep(check_sec)
-        async def bot_main():
+async def bot_main():
     telegram("⏳ <b>Bot</b> ishga tushmoqda...\nExness MT5 ga ulanilmoqda...")
     try:
         api = MetaApi(META_TOKEN)
